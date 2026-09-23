@@ -10,11 +10,11 @@ public class VendaDiaTest {
 
     @Test 
     public void classificaDiaBomCorretamente(){
-
+        //TODO
     }
 
     @Test 
     public void verificaDiaMelhorQueOOutro(){
-        
+        //TODO
     }
 }
