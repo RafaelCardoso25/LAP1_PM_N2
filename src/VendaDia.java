@@ -93,8 +93,27 @@ public class VendaDia {
      * @return TRUE caso este dia tenha sido melhor, FALSE caso contrário.
      */
     public boolean melhorQue(VendaDia outroDia){
-        //TODO
-        return false;
+        String diaHoje = classificacao();
+        String dia2 = outroDia.classificacao(); 
+        if (diaHoje == "bom") {
+            if (dia2 == "bom") {
+                return false;
+            }
+            else return true;
+        }
+        if (diaHoje == "regular") {
+            if (dia2 == "regular" || dia2 == "bom") {
+                return false;
+            }
+            else return true;
+        }
+        if (diaHoje == "ruim") {
+            if (dia2 == "ruim" || dia2 == "bom" || dia2 == "regular") {
+                return false;
+            }
+            else return true;
+        }
+        else return false;
     }
 
     /**
@@ -102,8 +121,19 @@ public class VendaDia {
      * @return Uma string de uma única palavra indicando a classificação deste dia.
      */
     public String classificacao(){
-        //TODO
-        return "";
+        double faturamento = faturamento();
+        double impostos = valorImpostos();
+        double faturamentoLiquido = faturamento - impostos;
+        if (faturamentoLiquido >= 1000 && faturamentoLiquido <= 1499) {
+            return "bom";
+        }
+        else if (faturamentoLiquido >= 400 && faturamentoLiquido <= 999) {
+            return "regular";
+        }
+        else if (faturamentoLiquido >= 100 && faturamentoLiquido <= 399) {
+            return "ruim";
+        }
+        else return "pessimo";
     }
 
     /**
